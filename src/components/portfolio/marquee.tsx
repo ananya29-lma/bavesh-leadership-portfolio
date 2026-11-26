@@ -25,7 +25,7 @@ function Row({ items, reverse }: { items: string[]; reverse?: boolean }) {
         <span
           key={i}
           className={`flex items-center gap-8 whitespace-nowrap font-semibold tracking-tight ${
-            reverse ? "text-lg text-muted-foreground/60 md:text-xl" : "text-xl text-foreground md:text-2xl"
+            reverse ? "text-xl text-muted-foreground/60 md:text-2xl" : "text-xl text-foreground md:text-2xl"
           }`}
         >
           {m.trim()}
