@@ -31,7 +31,7 @@ describe("hero soundtrack boundary", () => {
   });
 
   it("keeps the first song quieter than the second", () => {
-    expect(HERO_TRACK_VOLUME).toBe(0.5);
+    expect(HERO_TRACK_VOLUME).toBe(0.3);
     expect(HERO_TRACK_VOLUME).toBeLessThan(CONTINUOUS_TRACK_VOLUME);
   });
 });
