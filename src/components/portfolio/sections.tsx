@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Mail } from "lucide-react";
 import { ScrollRevealParagraph } from "./scroll-reveal-paragraph";
+import { WakeGlyph } from "@/components/ui/background-ascii-wake";
 import serviceFlash from "@/assets/service-flash.jpg";
 import serviceCommunity from "@/assets/service-community.jpg";
 import serviceSankaracharya from "@/assets/service-sankaracharya.jpg";
@@ -383,21 +384,26 @@ export function About() {
   }, []);
 
   return (
-    <section id="about" className="mx-auto max-w-6xl px-6 py-28">
-      <SectionTitle light="About" bold="Me" />
-      <div className="max-w-3xl text-left">
-        <ScrollRevealParagraph text="I have been working on building businesses and initiatives focused on skill development, technology, entrepreneurship, and creating opportunities for young people. I strongly believe that India’s greatest strength is its young population, and I want to contribute by helping young people develop practical skills, become employable, and pursue entrepreneurship. As a strategic-minded entrepreneur, my goal is to build organizations that create employment, encourage innovation, and contribute meaningfully to India’s economic and social development." />
+    <section id="about" className="relative overflow-hidden">
+      <div className="about-wake pointer-events-none absolute inset-0" aria-hidden="true">
+        <WakeGlyph className="absolute inset-0" />
       </div>
-      <div ref={statsRef} className="mt-16 grid gap-10 sm:grid-cols-3">
-        {aboutStats.map((stat, i) => (
-          <div key={stat.label}>
-            <p className="text-editorial text-5xl tabular-nums text-accent md:text-6xl">
-              {counts[i] ?? stat.target}
-              {stat.suffix}
-            </p>
-            <p className="text-editorial mt-2 text-sm text-muted-foreground">{stat.label}</p>
-          </div>
-        ))}
+      <div className="relative mx-auto max-w-6xl px-6 py-28">
+        <SectionTitle light="About" bold="Me" />
+        <div className="max-w-3xl text-left">
+          <ScrollRevealParagraph text="I have been working on building businesses and initiatives focused on skill development, technology, entrepreneurship, and creating opportunities for young people. I strongly believe that India’s greatest strength is its young population, and I want to contribute by helping young people develop practical skills, become employable, and pursue entrepreneurship. As a strategic-minded entrepreneur, my goal is to build organizations that create employment, encourage innovation, and contribute meaningfully to India’s economic and social development." />
+        </div>
+        <div ref={statsRef} className="mt-16 grid gap-10 sm:grid-cols-3">
+          {aboutStats.map((stat, i) => (
+            <div key={stat.label}>
+              <p className="text-editorial text-5xl tabular-nums text-accent md:text-6xl">
+                {counts[i] ?? stat.target}
+                {stat.suffix}
+              </p>
+              <p className="text-editorial mt-2 text-sm text-muted-foreground">{stat.label}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

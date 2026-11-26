@@ -514,6 +514,26 @@
   box-shadow: 0 -48px 90px oklch(0 0 0 / 40%);
 }
 
+/* ASCII wake field behind About: fades out at the section edges so it never
+   shows a hard line against the pinned hero above or the marquee below. */
+.about-wake {
+  opacity: 0.8;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 18%,
+    #000 82%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 18%,
+    #000 82%,
+    transparent
+  );
+}
+
 /* Contact slides up over the pinned experience dial instead of stacking after it. */
 .contact-overlap {
   position: relative;
