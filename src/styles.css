@@ -833,3 +833,39 @@
   .venture-light__ray, .venture-light__glow { animation: none; opacity: 0.7; }
   .venture-spark { animation: none; opacity: calc(var(--o, 1) * 0.7); }
 }
+
+/* About: glowing light curtain rising from the floor */
+.about-curtain {
+  --curtain-blue: oklch(0.55 0.25 265);
+  --curtain-red: oklch(0.58 0.24 20);
+  --curtain-pink: oklch(0.62 0.27 340);
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 70%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.6%;
+  filter: blur(14px) saturate(1.2);
+  opacity: 0.55;
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+.about-curtain span {
+  flex: 1;
+  height: 100%;
+  transform-origin: bottom;
+  background: linear-gradient(to top, var(--c), transparent 85%);
+  animation: curtain-sway var(--d) ease-in-out var(--delay) infinite alternate,
+    curtain-hue 9s ease-in-out var(--delay) infinite alternate;
+}
+@keyframes curtain-sway {
+  from { transform: scaleY(0.35); opacity: 0.4; }
+  to { transform: scaleY(1); opacity: 1; }
+}
+@keyframes curtain-hue {
+  from { filter: hue-rotate(0deg); }
+  to { filter: hue-rotate(-70deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-curtain span { animation: none; transform: scaleY(0.7); }
+}

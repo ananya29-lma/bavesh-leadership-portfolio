@@ -327,6 +327,13 @@ const aboutStats = [
   { target: 12, suffix: "", label: "Teams collaborated" },
 ] as const;
 
+const curtainColors = ["var(--curtain-blue)", "var(--curtain-pink)", "var(--curtain-red)"];
+const curtainBars = Array.from({ length: 28 }, (_, i) => ({
+  c: curtainColors[Math.floor(hash(i, 11) * 3)] ?? "var(--curtain-blue)",
+  d: `${(2.2 + hash(i, 12) * 2.8).toFixed(2)}s`,
+  delay: `${(-hash(i, 13) * 5).toFixed(2)}s`,
+}));
+
 export function About() {
   const statsRef = useRef<HTMLDivElement | null>(null);
   const [counts, setCounts] = useState<number[]>(() => aboutStats.map((s) => s.target));
@@ -387,6 +394,14 @@ export function About() {
     <section id="about" className="relative overflow-hidden">
       <div className="about-wake pointer-events-none absolute inset-0" aria-hidden="true">
         <WakeGlyph className="absolute inset-0" />
+      </div>
+      <div className="about-curtain pointer-events-none" aria-hidden="true">
+        {curtainBars.map((b, i) => (
+          <span
+            key={i}
+            style={{ "--c": b.c, "--d": b.d, "--delay": b.delay } as CSSProperties}
+          />
+        ))}
       </div>
       <div className="relative mx-auto max-w-6xl px-6 py-28">
         <SectionTitle light="About" bold="Me" />
