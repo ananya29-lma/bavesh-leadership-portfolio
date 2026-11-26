@@ -3,7 +3,7 @@ import { Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import soundtrack from "@/assets/hero-soundtrack.mp3.asset.json";
 import continuousSoundtrack from "@/assets/continuous-soundtrack.mp3.asset.json";
-import { soundtrackState } from "@/lib/hero-audio";
+import { CONTINUOUS_TRACK_VOLUME, HERO_TRACK_VOLUME, soundtrackState } from "@/lib/hero-audio";
 
 export function PageAudio({ nextSectionRef }: { nextSectionRef: RefObject<HTMLDivElement | null> }) {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -37,6 +37,8 @@ export function PageAudio({ nextSectionRef }: { nextSectionRef: RefObject<HTMLDi
   useEffect(() => {
     const audio = audioRef.current;
     const continuous = continuousRef.current;
+    if (audio) audio.volume = HERO_TRACK_VOLUME;
+    if (continuous) continuous.volume = CONTINUOUS_TRACK_VOLUME;
     sync();
     window.addEventListener("scroll", sync, { passive: true });
     window.addEventListener("resize", sync);

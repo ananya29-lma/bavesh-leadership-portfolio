@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { shouldMuteHeroAudio, soundtrackState } from "@/lib/hero-audio";
+import {
+  CONTINUOUS_TRACK_VOLUME,
+  HERO_TRACK_VOLUME,
+  shouldMuteHeroAudio,
+  soundtrackState,
+} from "@/lib/hero-audio";
 
 describe("hero soundtrack boundary", () => {
   it("mutes as soon as the next section enters the viewport", () => {
@@ -23,5 +28,10 @@ describe("hero soundtrack boundary", () => {
 
   it("mutes both songs when sound is turned off", () => {
     expect(soundtrackState(935, 779, false, true)).toEqual({ heroMuted: true, continuousMuted: true });
+  });
+
+  it("keeps the first song quieter than the second", () => {
+    expect(HERO_TRACK_VOLUME).toBe(0.5);
+    expect(HERO_TRACK_VOLUME).toBeLessThan(CONTINUOUS_TRACK_VOLUME);
   });
 });
