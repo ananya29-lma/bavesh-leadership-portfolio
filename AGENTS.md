@@ -30,3 +30,4 @@ use the editor.
 <!-- LOVABLE:END -->
 
 - Keep scroll-driven warp ring geometry in a browser-safe math module and render live HTML cards through the reusable carousel; this preserves accessible portfolio content without canvas or server dependencies.
+- Keep hero soundtrack playback in a dedicated browser-only effect with an explicit sound control and the next section's viewport boundary; this respects autoplay restrictions and the overlapping scroll layout.
