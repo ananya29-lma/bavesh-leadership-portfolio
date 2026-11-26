@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { HeroAudio } from "./hero-audio";
 
 /* Harborlux "Claim Your Summit" opening: a 7.4 s intro on one master clock, then a live rain sky. */
 
@@ -360,7 +359,6 @@ export function SummitHero() {
   return (
     <div ref={scrollWrapRef} className="hx-scroll-stage">
       <section ref={heroRef} className="hx-hero" data-intro="true" aria-label="Harborlux">
-        <HeroAudio scrollWrapRef={scrollWrapRef} />
         <div ref={stageRef} className="hx-stage">
           <div ref={backRef} className="hx-layer hx-back">
             {media && <img src={src(IMAGES.back)} alt="" draggable={false} />}

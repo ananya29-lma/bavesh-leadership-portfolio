@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { shouldMuteHeroAudio } from "@/lib/hero-audio";
+import { shouldMuteHeroAudio, soundtrackState } from "@/lib/hero-audio";
 
 describe("hero soundtrack boundary", () => {
   it("mutes as soon as the next section enters the viewport", () => {
@@ -10,5 +10,18 @@ describe("hero soundtrack boundary", () => {
   it("allows sound while only the hero is visible, including on return", () => {
     expect(shouldMuteHeroAudio(935, 779)).toBe(false);
     expect(shouldMuteHeroAudio(779, 779)).toBe(false);
+  });
+
+  it("plays both songs together in the hero", () => {
+    expect(soundtrackState(935, 779, true, true)).toEqual({ heroMuted: false, continuousMuted: false });
+  });
+
+  it("continues only the second song through the next section and the end", () => {
+    expect(soundtrackState(778, 779, true, true)).toEqual({ heroMuted: true, continuousMuted: false });
+    expect(soundtrackState(-6000, 779, true, true)).toEqual({ heroMuted: true, continuousMuted: false });
+  });
+
+  it("mutes both songs when sound is turned off", () => {
+    expect(soundtrackState(935, 779, false, true)).toEqual({ heroMuted: true, continuousMuted: true });
   });
 });

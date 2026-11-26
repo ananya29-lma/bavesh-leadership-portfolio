@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useRef } from "react";
+import { PageAudio } from "@/components/portfolio/hero-audio";
 import { Marquee } from "@/components/portfolio/marquee";
 import { Experience } from "@/components/portfolio/experience-dial";
 import { HERO_FONT_URL, HERO_SOCIAL_IMAGE_URL, SummitHero } from "@/components/portfolio/summit-hero";
@@ -34,10 +36,12 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const nextSectionRef = useRef<HTMLDivElement>(null);
   return (
     <main className="bg-background">
+      <PageAudio nextSectionRef={nextSectionRef} />
       <SummitHero />
-      <div className="hx-overlap">
+      <div ref={nextSectionRef} className="hx-overlap">
         <About />
         <Awards />
         <Marquee />
