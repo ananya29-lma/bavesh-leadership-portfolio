@@ -411,7 +411,7 @@ export function About() {
         <div ref={statsRef} className="mt-16 grid grid-cols-3 gap-4 sm:gap-10">
           {aboutStats.map((stat, i) => (
             <div key={stat.label}>
-              <p className="text-editorial text-3xl tabular-nums text-accent sm:text-5xl md:text-6xl">
+              <p className="text-editorial text-4xl tabular-nums text-accent sm:text-5xl md:text-6xl">
                 {counts[i] ?? stat.target}
                 {stat.suffix}
               </p>
