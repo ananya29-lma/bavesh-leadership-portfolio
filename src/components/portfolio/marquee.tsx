@@ -18,18 +18,18 @@ const offsetRow = [...marquee.slice(5), ...marquee.slice(0, 5)];
 function Row({ items, reverse }: { items: string[]; reverse?: boolean }) {
   return (
     <div
-      className={`marquee-track flex w-max gap-8 ${reverse ? "marquee-reverse" : ""}`}
+      className={`marquee-track flex w-max gap-10 ${reverse ? "marquee-reverse" : ""}`}
       aria-hidden={reverse ? "true" : undefined}
     >
       {[...items, ...items, ...items, ...items].map((m, i) => (
         <span
           key={i}
-          className={`flex items-center gap-8 whitespace-nowrap font-semibold tracking-tight ${
-            reverse ? "text-xl text-muted-foreground/60 md:text-2xl" : "text-xl text-foreground md:text-2xl"
+          className={`strip-text flex items-center gap-10 whitespace-nowrap text-2xl font-bold uppercase tracking-tight md:text-3xl ${
+            reverse ? "opacity-60" : ""
           }`}
         >
           {m.trim()}
-          <span className="text-accent">✱</span>
+          <span className={i % 2 ? "strip-spark-alt" : "strip-spark"}>✦</span>
         </span>
       ))}
     </div>
@@ -40,7 +40,7 @@ export function Marquee() {
   return (
     <div
       id="services"
-      className="marquee-mask flex flex-col gap-3 overflow-hidden border-y border-border bg-secondary/30 py-6"
+      className="marquee-mask strip-band flex flex-col gap-4 overflow-hidden py-8 md:py-10"
     >
       <Row items={marquee} />
       <Row items={offsetRow} reverse />

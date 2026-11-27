@@ -108,6 +108,10 @@
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 14%);
   --ring: oklch(0.62 0.24 25);
+  --strip-bg: oklch(0.16 0.02 275);
+  --strip-text: oklch(0.97 0.005 275);
+  --strip-spark: oklch(0.62 0.24 25);
+  --strip-spark-alt: oklch(0.62 0.24 25);
   --chart-1: oklch(0.62 0.24 25);
   --chart-2: oklch(0.65 0.19 255);
   --chart-3: oklch(0.75 0.15 90);
@@ -189,6 +193,24 @@
 
 .marquee-mask {
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.strip-band {
+  background: var(--strip-bg);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.strip-text {
+  color: var(--strip-text);
+}
+
+.strip-spark {
+  color: var(--strip-spark);
+}
+
+.strip-spark-alt {
+  color: var(--strip-spark-alt);
 }
 
 @utility text-editorial {
