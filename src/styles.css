@@ -110,8 +110,8 @@
   --ring: oklch(0.62 0.24 25);
   --strip-bg: oklch(0.16 0.02 275);
   --strip-text: oklch(0.97 0.005 275);
-  --strip-spark: oklch(0.62 0.24 25);
-  --strip-spark-alt: oklch(0.62 0.24 25);
+  --strip-spark: oklch(0.8 0.16 75);
+  --strip-spark-alt: oklch(0.8 0.16 75);
   --chart-1: oklch(0.62 0.24 25);
   --chart-2: oklch(0.65 0.19 255);
   --chart-3: oklch(0.75 0.15 90);
