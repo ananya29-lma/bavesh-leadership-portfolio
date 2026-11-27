@@ -408,14 +408,16 @@ export function About() {
         <div className="max-w-3xl text-left">
           <ScrollRevealParagraph text="I have been working on building businesses and initiatives focused on skill development, technology, entrepreneurship, and creating opportunities for young people. I strongly believe that India’s greatest strength is its young population, and I want to contribute by helping young people develop practical skills, become employable, and pursue entrepreneurship. As a strategic-minded entrepreneur, my goal is to build organizations that create employment, encourage innovation, and contribute meaningfully to India’s economic and social development." />
         </div>
-        <div ref={statsRef} className="mt-16 grid gap-10 sm:grid-cols-3">
+        <div ref={statsRef} className="mt-16 grid grid-cols-3 gap-4 sm:gap-10">
           {aboutStats.map((stat, i) => (
             <div key={stat.label}>
-              <p className="text-editorial text-5xl tabular-nums text-accent md:text-6xl">
+              <p className="text-editorial text-3xl tabular-nums text-accent sm:text-5xl md:text-6xl">
                 {counts[i] ?? stat.target}
                 {stat.suffix}
               </p>
-              <p className="text-editorial mt-2 text-sm text-muted-foreground">{stat.label}</p>
+              <p className="text-editorial mt-2 text-[11px] leading-snug text-muted-foreground sm:text-sm">
+                {stat.label}
+              </p>
             </div>
           ))}
         </div>
